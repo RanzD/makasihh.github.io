@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TO CHELSEA</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #86a6c8;
+        margin: 0;
+        padding: 20px;
+      }
+      .lyrics-container {
+        background-color: #081f2a;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #fffefe;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #fffefe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lyrics-container">
+      <h1>THANKS FOR EVERYTHING</h1>
+      <p id="lyrics"></p>
+    </div>
+
+    <script>
+      const lyrics = `Hi Chelll\nAku cuman mau ucapin\nMakasihh yaaa\nUntuk semua hal yang kamu berikan untukku\nTerimakasiih atas semua waktunyaa\nAku juga mau minta maaf ke kamu\nMaaf kalau aku masih banyak kurangnyaa\nMaaf kalau aku sering bikin salahh\nAku bingung mau bilang apaa\nSoalnya tiba tiba bangett\nYang pasti aku masih sayangg bangett sama kamuu\nKita jangan sampai asing yahh?\nWalaupun nanti kita udah jarang ngechat\nPliss\nJangan sampai asingg yaa\nApalagi lost contact\nAku masih mau ngobrol sama kamuuu\nKalau ga mau discordan\nWA aja udah cukup banget buat akuu\nIntinyaa PLISSS\nDon't Be a Stranger,Okay?\nAku akan tetap sayang sama kamu\nApapun keadaannya\nAku enggak masalah\nKalau kamu ga demikian\nTapi aku akan selalu ada\nKapanpun kamu butuh\nKalo nanti kamu nemuin yang baru\nAku ikhlas kok\nIntinyaa...\nAku akan selalu ada\nEntah sampai kapan perasaan ini bertahan\nAku sayang kamu chelll`;
+
+      const displayLyrics = (
+        text,
+        elementId,
+        charDelay = 80,
+        lineDelay = 80,
+        specialDelay = 3200
+      ) => {
+        const element = document.getElementById(elementId);
+        let index = 0;
+
+        const displayNextChar = () => {
+          if (index < text.length) {
+            if (text[index] === "\n") {
+              element.innerHTML += "<br>";
+              setTimeout(displayNextChar, lineDelay); // Jeda antar baris
+            } else if (text[index] === "\b") {
+              element.innerHTML += "<br>";
+              setTimeout(displayNextChar, specialDelay); // Jeda khusus
+            } else {
+              element.innerHTML += text[index];
+              setTimeout(displayNextChar, charDelay); // Jeda antar karakter
+            }
+            index++;
+          }
+        };
+
+        displayNextChar();
+      };
+
+      window.onload = () => {
+        displayLyrics(lyrics, "lyrics");
+      };
+    </script>
+  </body>
+</html>
